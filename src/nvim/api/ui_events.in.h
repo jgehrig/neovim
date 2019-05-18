@@ -161,4 +161,7 @@ void msg_ruler(Array content)
   FUNC_API_SINCE(6) FUNC_API_REMOTE_ONLY;
 void msg_history_show(Array entries)
   FUNC_API_SINCE(6) FUNC_API_REMOTE_ONLY;
+
+void confirm_dialog(Integer type, String title, String message, String buttons, Integer dfltbutton)
+  FUNC_API_SINCE(6) FUNC_API_REMOTE_ONLY;
 #endif  // NVIM_API_UI_EVENTS_IN_H

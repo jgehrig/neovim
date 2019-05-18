@@ -3087,6 +3087,19 @@ do_dialog (
     return dfltbutton;  // return default option
   }
 
+  // Remote UIs may handle dialog display
+  if (ui_has(kUIDialogs)) {
+
+    ui_call_confirm_dialog(
+      type,
+      cstr_to_string((char*)title),
+      cstr_to_string((char*)message),
+      cstr_to_string((char*)buttons),
+      dfltbutton);
+
+    // Dialog result returned as keystroke, character is an integer value
+    return get_keystroke();
+  }
 
   int save_msg_silent = msg_silent;
   int oldState = State;

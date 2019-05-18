@@ -49,6 +49,7 @@ with these (optional) keys:
 				'wildmenu'. |ui-popupmenu|
 	`ext_tabline`		Externalize the tabline. |ui-tabline|
 	`ext_termcolors`	Use external default colors.
+	`ext_dialogs`		Use external modal dialogs. |ui-dialogs|
 
 Specifying an unknown option is an error; UIs can check the |api-metadata|
 `ui_options` key for supported options.
@@ -744,4 +745,22 @@ events, which the UI must handle.
 	entries, where each entry is a `[kind, content]` tuple.
 
 ==============================================================================
+Modal Dialog Events                                                *hui-dialogs*
+
+Only sent if `ext_dialogs` option is set in |ui-options|.
+
+This extension allows the UI to control the display of modal dialogs. These
+dialogs are displayed by vim eval function "confirm(...)".
+
+["confirm_dialog", type, title, message, buttons, dfltbutton)
+	A modal dialog request was triggered by vim. All parameters correspond
+	to eval::confirm(...).
+	type:       Enum: VIM_GENERIC, VIM_ERROR, VIM_INFO, VIM_QUESTION
+	title:      Dialog title string (optional).
+	message:    Dialog prompt/description for the user.
+	buttons:    String of button labels separated by "\n".
+	dfltbutton: The default button index. ]
+
+==============================================================================
+
  vim:tw=78:ts=8:noet:ft=help:norl:
